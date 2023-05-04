@@ -1,0 +1,28 @@
+Operating System hw2 part.1 :
+1. 
+    Yes, when the memory word = 0 , then it can be
+    used . Opsitely , memory word = 1 then it can't
+    be used . 
+    First , put 1 into register and exchange with 
+    memory word . Then if register = 0 , it can be
+    used , or register = 1 then it can't.
+    When the function is finished , reset the register
+    into 0.
+
+2.  
+    (a) Q = 無限大 ， 因此cpu不中斷
+        而cpu efficiency = T/(T+S)
+    (b) Q > T , cpu也不中斷
+        而cpu efficiency = T/(T+S)
+    (c) S < Q < T ， 要先確認switch執行次數 : T/Q
+        而cpu efficiency = T / ( T + (T / Q) * S )
+    (d) Q = S ， cpu efficiency = T / ( T + (T / Q) * S ) = 1/2
+    (e) Q nearly 0 ， cpu efficiency = 無限大
+
+3. 
+    thread receive(A) & thread receive(B)
+
+4.  
+    A=1 ; B=1 ; C=2 ; D=2
+    實際帶入不確定何者會優先執行，因此結果有4!=16種。
+

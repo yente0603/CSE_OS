@@ -82,7 +82,7 @@ void *myrealloc(void *ptr, size_t size)
     if (np == NULL)
         return NULL;
     memset(np, 0, size);
-    memset(np, ptr, p->size);
+    memcpy(np, ptr, p->size);
     myfree(ptr);
 
     return np;

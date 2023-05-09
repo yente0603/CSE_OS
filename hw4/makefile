@@ -14,17 +14,10 @@
 
 CC = gcc
 
-all : main
-
-clean :
-	rm -f *.o main
-
-dep :
-	$(CC) -MM *.c > dep
-
-main : main.o mm.o
-	$(CC) -o main main.o mm.o
-
-mm.o : mm.c
-	$(CC) -c mm.c
-
+all: main.o mm.o
+	$(CC) -o main.elf main.o mm.O3
+dep: main.c mm.c
+	$(CC) -Wall -std=c11 -03 -c mm.c
+	$(CC) -Wall -std=c11 -03 -c main.c
+clean:
+	-rm main.elf *.o

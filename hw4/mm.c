@@ -3,96 +3,118 @@
 #include <string.h>
 #include <unistd.h>
 void *base = NULL;
-typedef struct block
-{
-    size_t size, empty;
-    struct block *next;
-} block;
 
-block *space(size_t size, block *tail)
+typedef struct meta
 {
-    block *current;
-    current = (block *)sbrk(0);
-    void *need = sbrk(size + sizeof(block));
-    assert((void *)current == need);
+    size_t size;
+    int empty;
+    struct meta *next;
+} meta;
+
+meta *need_space(size_t size, meta *tail)
+{
+    meta *cur;
+    cur = (meta *)sbrk(0);
+    void *need = sbrk(size + sizeof(meta));
+    assert((void *)cur == need);
     if (need == (void *)-1)
+    {
         return NULL;
+    }
     if (tail != NULL)
-        tail->next = current;
-    current->size = size;
-    current->empty = 0;
-    current->next = NULL;
-    return current;
+    {
+        tail->next = cur;
+    }
+    cur->size = size;
+    cur->empty = 0;
+    cur->next = NULL;
+    return cur;
 }
 
-block *find_empty_block(size_t size, block **tail)
+meta *find_empty_meta(size_t size, meta **tail)
 {
-    block *current = (block *)base;
-    while (current && !(current->size >= size && current->empty == 1))
+    meta *cur = (meta *)base;
+    while (cur && !(cur->size >= size && cur->empty == 1))
     {
-        *tail = current;
-        current = current->next;
+        *tail = cur;
+        cur = cur->next;
     }
-    return current;
+    return cur;
 }
+
 void *mymalloc(size_t size)
 {
-    block *current;
+    meta *cur;
     if (size <= 0)
+    {
         return NULL;
+    }
+
     if (base == NULL)
     {
-        current = space(size, NULL);
-        if (current == NULL)
+        cur = need_space(size, NULL);
+        if (cur == NULL)
+        {
             return NULL;
-        base = current;
+        }
+        base = cur;
     }
     else
     {
-        block *tail = (block *)base;
-        current = find_empty_block(size, &tail);
-        if (current == NULL)
+        meta *tail = (meta *)base;
+        cur = find_empty_meta(size, &tail);
+        if (cur == NULL)
         {
-            current = space(size, tail);
-            if (current == NULL)
+            cur = need_space(size, tail);
+            if (cur == NULL)
+            {
                 return NULL;
+            }
             else
-                current->empty = 0;
+            {
+                cur->empty = 0;
+            }
         }
     }
-    return (current + 1);
+    return (cur + 1);
 }
+
 void myfree(void *ptr)
 {
     if (ptr == NULL)
         return;
-    block *free_ptr = (block *)ptr - 1;
+    meta *free_ptr = (meta *)ptr - 1;
     assert(free_ptr->empty == 0);
     free_ptr->empty = 1;
 }
+
 void *myrealloc(void *ptr, size_t size)
 {
     if (ptr == NULL)
         return mymalloc(size);
-    block *p = (block *)ptr - 1;
+    meta *p = (meta *)ptr - 1;
     if (p->size >= size)
         return ptr;
 
-    void *np = mymalloc(size);
-    if (np == NULL)
+    void *newp = mymalloc(size);
+    if (newp == NULL)
         return NULL;
-    memset(np, 0, size);
-    memset(np, ptr, p->size);
+
+    memset(newp, 0, size);
+    memcpy(newp, ptr, p->size);
     myfree(ptr);
 
-    return np;
+    return newp;
 }
+
 void *mycalloc(size_t nmemb, size_t size)
 {
     size_t total = nmemb * size;
     void *p = mymalloc(total);
     if (p == NULL)
+    {
         return NULL;
+    }
     memset(p, 0, total);
     return p;
 }

@@ -1,0 +1,15 @@
+myrealloc :
+重新改寫被分配的記憶體大小，ptr:NULL時候 等同於malloc，先分配一個新的空間，給他新的大小，memcpy把舊的資料，複寫到新的
+data space裡面，再把舊的free掉，新的插進去。
+
+mycalloc :
+先malloc再把內容物設為0再return
+
+sbrk(int incr) :
+用來增加分配給呼叫程式的資料段的空間數量,增加incr個位元組的空間，
+
+need_space :
+推一個我所需要的空間，用sbrk呼叫記憶體需要的空間，最後回傳cur給malloc函式，去分配資料
+
+assert :
+檢查某種條件，判斷他是否繼續執行

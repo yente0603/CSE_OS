@@ -1,4 +1,4 @@
-#include "write.h"
+#include "../lib/write.h"
 void test_write(const char *file, const void *context)
 {
     int fd;

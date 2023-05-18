@@ -1,6 +1,6 @@
 #include <signal.h>
-#include "read.h"
-#include "write.h"
+#include "lib/read.h"
+#include "lib/write.h"
 char context[4096];
 void _signal()
 {

@@ -1,12 +1,13 @@
+#include <signal.h>
 #include "read.h"
 #include "write.h"
-#define _alerm()                    \
-    {                               \
-        sleep(1);                   \
-        printf("\nTerminate...\n"); \
-        exit(EXIT_FAILURE);         \
-    }
 char context[4096];
+void _alerm()
+{
+    sleep(1);
+    printf("\nTerminate...\n");
+    exit(EXIT_FAILURE);
+}
 int main()
 {
     signal(SIGINT, _alerm);
@@ -39,9 +40,4 @@ int main()
         exit(EXIT_FAILURE);
     }
     return 0;
-}
-void writeout()
-{
-    sleep(1);
-    printf("\nwrite finish...\n");
 }

@@ -14,12 +14,6 @@
         perror(message);    \
         exit(EXIT_FAILURE); \
     } while (0)
-#define _alerm()                    \
-    {                               \
-        sleep(1);                   \
-        printf("\nTerminate...\n"); \
-        exit(EXIT_FAILURE);         \
-    }
 void test_read(const char *file, void *buf);
 /*
 1. file: the file you want to mmap and read as char*

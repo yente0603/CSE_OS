@@ -1,7 +1,6 @@
 #include "read.h"
 void test_read(const char *file, void *buf)
 {
-    signal(SIGINT, _alerm);
     int fd;
     void *src;
     fd = open(file, O_RDONLY);
@@ -12,7 +11,7 @@ void test_read(const char *file, void *buf)
     src = mmap(NULL, getpagesize(), PROT_READ, MAP_SHARED, fd, 0);
     close(fd); // Close fd first, Be sure it read from memory immediately.
 
-    if (p == MAP_FAILED)
+    if (src == MAP_FAILED)
         _error("mmap error.\n");
 
     memcpy(buf, src, getpagesize());

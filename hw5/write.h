@@ -15,13 +15,6 @@
         perror(message);    \
         exit(EXIT_FAILURE); \
     } while (0)
-#define _alerm()                    \
-    {                               \
-        sleep(1);                   \
-        printf("\nTerminate...\n"); \
-        exit(EXIT_FAILURE);         \
-    }
-
 void test_write(const char *file, const void *context);
 /*
 1. file: The file of file system, whitch mmaped into memory;

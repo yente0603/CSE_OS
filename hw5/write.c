@@ -1,7 +1,6 @@
 #include "write.h"
 void test_write(const char *file, const void *context)
 {
-    signal(SIGINT, _alerm);
     int fd;
     void *p;
     fd = open("file", O_RDWR | O_CREAT | O_TRUNC, 0777);

@@ -3,3 +3,4 @@
 *.zip
 output/
 *.DS_S
+*~$

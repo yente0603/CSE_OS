@@ -10,15 +10,7 @@ int main()
 {
     // signal(SIGINT, sig);
     pid_t pid = fork();
-    int fd = open("file.txt", O_RDWR | O_CREAT | O_TRUNC, 0777);
-    /*
-    O_TRUNC: If the file already exists and is a regular file and the access
-             mode allows writing it will be truncated to length 0. If the
-             file is a FIFO or terminal device file, the O_TRUNC flag is ignored.
-             Otherwise, the effect of O_TRUNC is unspecified.
-    0777:the protection mode in octal.
-    */
-
+    // int fd = open("file.txt", O_RDWR | O_CREAT | O_TRUNC, 0777);
     while (1)
     {
         if (pid) /*parent mode*/

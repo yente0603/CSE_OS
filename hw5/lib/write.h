@@ -5,9 +5,11 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <signal.h>
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <sys/wait.h>
+#include <sys/types.h>
 #include <sys/mman.h> //mmap()
 #define _error(message)     \
     do                      \
@@ -15,6 +17,7 @@
         perror(message);    \
         exit(EXIT_FAILURE); \
     } while (0)
+char context[4096];
 void test_write(const char *file, const void *context);
 /*
 1. file: The file of file system, whitch mmaped into memory;

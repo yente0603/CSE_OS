@@ -2,7 +2,7 @@
 #include "read.h"
 #include "write.h"
 char context[4096];
-void _alerm()
+void _signal()
 {
     sleep(1);
     printf("\nTerminate...\n");
@@ -10,7 +10,7 @@ void _alerm()
 }
 int main()
 {
-    signal(SIGINT, _alerm);
+    signal(SIGINT, _signal);
     int status;
     pid_t pid = fork();
     if (pid > 0) /*parent mode*/

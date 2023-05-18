@@ -1,14 +1,11 @@
-#include <signal.h>
 #include "lib/write.h"
 #include "lib/read.h"
-// char context[4096];
 // void sig()
 // {
 //     sleep(1);
 //     printf("\nTerminate...\n");
 //     exit(EXIT_FAILURE);
 // }
-void output(int _signal);
 int main()
 {
     // signal(SIGINT, sig);

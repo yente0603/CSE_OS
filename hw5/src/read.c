@@ -1,5 +1,5 @@
 #include "../lib/read.h"
-void test_read(const char *file, void *context)
+void test_read(const char *file, char *context)
 {
     int fd;
     void *src;

@@ -1,9 +1,11 @@
 #include "../lib/write.h"
-void test_write(const char *file, const void *context)
+void test_write(const char *file, char *context)
 {
     int fd;
     char *dst;
     fd = open("file.txt", O_RDWR | O_CREAT | O_TRUNC, 0777);
+    if (fd == -1)
+        _error("write error.\n");
     // /*
     // O_TRUNC: If the file already exists and is a regular file and the access
     //          mode allows writing it will be truncated to length 0. If the
@@ -28,14 +30,14 @@ void test_write(const char *file, const void *context)
 
     int _len = 0;
     lseek(fd, _len + len, SEEK_SET);
+    lseek(fd, strlen(context), SEEK_SET);
     /*
     move fd's position to the offset bytes
     and return the new file position for RW
     */
 
-    if (fd == -1)
+    if (write(fd, "", 1) != 1)
         _error("write error.\n");
-
     dst = (char *)mmap(NULL, getpagesize(), PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
     /*
     void *mmap(void *addr, size_t length, int prot, int flags,int fd, off_t offset);
@@ -43,8 +45,7 @@ void test_write(const char *file, const void *context)
     */
     if (dst == MAP_FAILED)
         _error("mmap error.\n");
-    if (write(fd, "", 1) != 1)
-        _error("write error.\n");
+
     memcpy(dst, context, len); // write into the file
     _len += len;
     munmap(dst, getpagesize()); // close mmap

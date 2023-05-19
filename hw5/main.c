@@ -5,7 +5,16 @@ int main()
     pid_t pid = fork();
     if (pid > 0) /*parent mode*/
     {
-        test_write("test.txt");
+        size_t _len = 0;
+        printf("WRITE: \n");
+        while (~scanf("%[^\n]s", context) && getchar())
+        {
+            size_t len = strlen(context);
+            context[len++] = '\n';
+            _len += len;
+            break;
+        }
+        test_write("test.txt", context);
         int status;
         waitpid(pid, &status, 0);
     }

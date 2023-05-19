@@ -12,20 +12,17 @@ void test_write(const char *file)
     //          mode allows writing it will be truncated to length 0. If the
     //          file is a FIFO or terminal device file, the O_TRUNC flag is ignored.
     //          Otherwise, the effect of O_TRUNC is unspecified.
-    // 0777:the protection mode in octal.
+    // 0777: the protection mode in octal.
     // */
 
-    // if (signal(SIGCONT, output) == SIG_ERR)
-    // {
-    //     perror("signal error.\n");
-    //     exit(EXIT_FAILURE);
-    // }
+    // if (signal(SIGCONT, output) == SIG_ERR){}
     size_t len;
     printf("write: \n");
     while (~scanf("%[^\n]s", context) && getchar())
     {
         len = strlen((char *)context);
         context[len++] = '\n';
+        // printf("%ld\n", len);
         break;
     }
 

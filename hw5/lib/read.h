@@ -15,7 +15,7 @@
         perror(message);    \
         exit(EXIT_FAILURE); \
     } while (0)
-void test_read(const char *file, char *context);
+void test_read(const char *file, char *buf);
 /*
 1. file: the file you want to mmap and read as char*
 2. buf: The buffer you provide to contain readed in data.

@@ -14,8 +14,6 @@ void test_write(const char *file)
     //          Otherwise, the effect of O_TRUNC is unspecified.
     // 0777: the protection mode in octal.
     // */
-
-    // if (signal(SIGCONT, output) == SIG_ERR){}
     size_t len;
     printf("write: \n");
     while (~scanf("%[^\n]s", context) && getchar())
@@ -48,14 +46,8 @@ void test_write(const char *file)
     _len += len;
     munmap(dst, getpagesize()); // close mmap
     close(fd);                  // close fd
-
     /*
     resource: https://welkinchen.pixnet.net/blog/post/41312211-記憶體映射函數-mmap-的使用方法
               https://man7.org/linux/man-pages/man2/mmap.2.html
     */
 }
-// void output(int _signal)
-// {
-//     // memcpy(context, p, getpagesize());
-//     printf("read: %s\n", context);
-// }

@@ -1,5 +1,4 @@
 #include "../lib/write.h"
-char context[4096];
 void test_write(const char *file, const void *context)
 {
     int fd;
@@ -30,7 +29,7 @@ void test_write(const char *file, const void *context)
     if (dst == MAP_FAILED)
         _error("mmap error.\n");
 
-    memcpy(dst, context, strlen(context + 1)); // write into the file
+    memcpy(dst, context, strlen(context + 1)); // write into the memory
 
     if (write(fd, "", 1) != 1)
         _error("write error.\n");

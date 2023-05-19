@@ -1,5 +1,6 @@
 #include "lib/read.h"
 #include "lib/write.h"
+char context[4096];
 int main()
 {
     pid_t pid = fork();
@@ -20,9 +21,12 @@ int main()
     }
     else if (pid == 0) /*child mode*/
     {
-        char buf[sysconf(_SC_PAGESIZE)];
-        test_read("test.txt", buf);
+        // char buf[sysconf(_SC_PAGESIZE)];
+        // test_read("test.txt", buf);
         // printf("READ: %s\n", buf);
+
+        test_read("test.txt", context);
+        printf("READ: %s\n", context);
     }
     else
     {

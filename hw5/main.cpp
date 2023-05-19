@@ -11,28 +11,27 @@ int main()
     // signal(SIGINT, sig);
     pid_t pid = fork();
     // int fd = open("file.txt", O_RDWR | O_CREAT | O_TRUNC, 0777);
-    while (1)
-    {
-        if (pid) /*parent mode*/
-        {
-            test_write("file.txt", context);
-            int status;
-            waitpid(pid, &status, 0);
-        }
-        else if (pid == 0) /*child mode*/
-        {
-            // test_read("file.txt", context);
-            // // printf("read: %s\n", context);
 
-            char buf[sysconf(_SC_PAGESIZE)];
-            test_read("file.txt", buf);
-            printf("READ: %s", buf);
-        }
-        else
-        {
-            perror("fork error.\n");
-            exit(EXIT_FAILURE);
-        }
+    if (pid) /*parent mode*/
+    {
+        test_write("test.txt");
+        int status;
+        waitpid(pid, &status, 0);
     }
+    else if (pid == 0) /*child mode*/
+    {
+        // test_read("file.txt", context);
+        // // printf("read: %s\n", context);
+
+        char buf[sysconf(_SC_PAGESIZE)];
+        test_read("test.txt", buf);
+        printf("READ: %s", buf);
+    }
+    else
+    {
+        perror("fork error.\n");
+        exit(EXIT_FAILURE);
+    }
+
     return 0;
 }

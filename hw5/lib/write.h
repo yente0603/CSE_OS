@@ -18,7 +18,7 @@
         exit(EXIT_FAILURE); \
     } while (0)
 char context[4096];
-void test_write(const char *file, char *context);
+void test_write(const char *file);
 /*
 1. file: The file of file system, whitch mmaped into memory;
          If addr is NULL, then the kernel chooses the (page-aligned) address

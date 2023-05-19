@@ -1,9 +1,10 @@
 #include "../lib/write.h"
-void test_write(const char *file, char *context)
+void test_write(const char *file)
 {
     int fd;
     char *dst;
-    fd = open("file.txt", O_RDWR | O_CREAT | O_TRUNC, 0777);
+    memset(context, '\0', 4096); // initilize
+    fd = open(file, O_RDWR | O_CREAT | O_TRUNC, 0777);
     if (fd == -1)
         _error("write error.\n");
     // /*
@@ -28,9 +29,9 @@ void test_write(const char *file, char *context)
         break;
     }
 
-    int _len = 0;
+    size_t _len = 0;
     lseek(fd, _len + len, SEEK_SET);
-    lseek(fd, strlen(context), SEEK_SET);
+    // lseek(fd, strlen(context), SEEK_SET);
     /*
     move fd's position to the offset bytes
     and return the new file position for RW

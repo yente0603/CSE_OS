@@ -1,10 +1,11 @@
 CC = g++
+CFLAGS = -Wall -std=c++11 
 src = src
-all: main.o $(src)/read.o $(src)/write.o
-	$(CC) -o main.elf main.o $(src)/read.o $(src)/write.o
-dep: main.cpp $(src)/read.c $(src)/write.c
-	$(CC) -Wall -std=c11 -03 -c $(src)/read.c
-	$(CC) -Wall -std=c11 -03 -c $(src)/write.c
-	$(CC) -Wall -std=c11 -03 -c main.cpp
+all: dep
+	$(CC) $(CFLAGS) main.o read.o write.o -o main.elf
+dep:
+	$(CC) $(CFLAGS) -c $(src)/read.c
+	$(CC) $(CFLAGS) -c $(src)/write.c
+	$(CC) $(CFLAGS) -c main.cpp
 clean:
-	-rm main.elf $(src)/*.o *.o file.txt
+	-rm main.elf $(src)/*.o *.o test.txt

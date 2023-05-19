@@ -3,7 +3,7 @@ void test_write(const char *file)
 {
     int fd;
     char *dst;
-    fd = open(file, O_RDWR | O_CREAT | O_TRUNC, 00777);
+    fd = open(file, O_RDWR | O_CREAT | O_TRUNC, 0777);
     if (fd == -1)
         _error("write error.\n");
     // /*

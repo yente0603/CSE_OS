@@ -8,7 +8,7 @@ dep:
 	$(CC) $(CFLAGS) -c $(SRC)/write.c
 	$(CC) $(CFLAGS) -c main.c
 clean:
-	-rm main.elf $(src)/*.o *.o test.txt
+	-rm main.elf $(src)/*.o *.o test
 
 
 # CC = gcc

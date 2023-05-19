@@ -16,7 +16,7 @@ void test_read(const char *file, char *buf)
     // if(signal(SIGCONT,output)==SIG_ERR){}
 
     memcpy(buf, src, getpagesize());
-    // printf("read: %s\n", buf);
+    printf("read: %s\n", buf);
     munmap(src, getpagesize());
 }
 // void output(int _signal)

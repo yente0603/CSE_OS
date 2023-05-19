@@ -10,6 +10,7 @@
 #include <sys/stat.h>
 #include <sys/mman.h> //mmap()
 #include <stddef.h>
+#include "write.h"
 #define _error(message)     \
     do                      \
     {                       \

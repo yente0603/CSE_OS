@@ -1,4 +1,5 @@
 #include "../lib/write.h"
+char context[4096] = {0};
 void test_write(const char *file)
 {
     int fd;

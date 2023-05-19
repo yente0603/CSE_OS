@@ -18,7 +18,7 @@
         perror(message);    \
         exit(EXIT_FAILURE); \
     } while (0)
-char context[4096] = {0};
+extern char context[4096];
 void test_write(const char *file);
 /*
 1. file: The file of file system, whitch mmaped into memory;

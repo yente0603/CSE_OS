@@ -6,13 +6,14 @@ int main()
     if (pid > 0) /*parent mode*/
     {
         test_write("test.txt");
-        waitpid(pid, NULL, 0);
+        int status;
+        waitpid(pid, &status, 0);
     }
     else if (pid == 0) /*child mode*/
     {
         char buf[sysconf(_SC_PAGESIZE)];
         test_read("test.txt", buf);
-        printf("READ: %s\n", buf);
+        // printf("READ: %s\n", buf);
     }
     else
     {

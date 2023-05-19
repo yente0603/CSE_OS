@@ -1,9 +1,9 @@
 #include "../lib/write.h"
 char context[4096];
-void test_write(const char *file)
+void test_write(const char *file, const void *context)
 {
     int fd;
-    void *dst;
+    char *dst;
     fd = open(file, O_RDWR | O_CREAT | O_TRUNC, 0777);
     if (fd == -1)
         _error("write error.\n");
@@ -15,7 +15,14 @@ void test_write(const char *file)
     // 0777: the protection mode in octal.
     // */
 
-    dst = mmap(NULL, getpagesize(), PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+    lseek(fd, strlen(context), SEEK_SET);
+    // lseek(fd, _len + len, SEEK_SET);
+    /*
+    move fd's position to the offset bytes
+    and return the new file position for RW
+    */
+
+    dst = (char *)mmap(NULL, getpagesize(), PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
     /*
     void *mmap(void *addr, size_t length, int prot, int flags,int fd, off_t offset);
     mmap() creates a new mapping in the virtual address space of the calling process.
@@ -23,21 +30,7 @@ void test_write(const char *file)
     if (dst == MAP_FAILED)
         _error("mmap error.\n");
 
-    char *_dst = (char *)dst;
-    printf("WRITE: \n");
-    while (~scanf("%[^\n]s", context) && getchar())
-    {
-        size_t len = strlen(context);
-        context[len++] = '\n';
-        lseek(fd, strlen(context), SEEK_SET);
-        // lseek(fd, _len + len, SEEK_SET);
-        /*
-        move fd's position to the offset bytes
-        and return the new file position for RW
-        */
-        memcpy(dst, context, len); // write into the file
-        _dst += len;
-    }
+    memcpy(dst, context, strlen(context + 1)); // write into the file
 
     if (write(fd, "", 1) != 1)
         _error("write error.\n");

@@ -3,7 +3,7 @@ void test_write(const char *file)
 {
     int fd;
     char *dst;
-    fd = open(file, O_RDWR | O_CREAT | O_TRUNC, 0777);
+    fd = open(file, O_RDWR | O_CREAT | O_TRUNC, 00777);
     if (fd == -1)
         _error("write error.\n");
     // /*
@@ -15,7 +15,7 @@ void test_write(const char *file)
     // */
 
     size_t len;
-    printf("write: \n");
+    printf("WRITE: \n");
     while (~scanf("%[^\n]s", context) && getchar())
     {
         // len = strlen((char *)context);
@@ -44,7 +44,8 @@ void test_write(const char *file)
         _error("mmap error.\n");
 
     memcpy(dst, context, len); // write into the file
-    _len += len;
+    //_len += len;
+    sleep(5);
     munmap(dst, getpagesize()); // close mmap
     close(fd);                  // close fd
     /*

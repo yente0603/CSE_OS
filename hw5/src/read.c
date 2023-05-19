@@ -3,7 +3,7 @@ void test_read(const char *file, char *buf)
 {
     int fd;
     void *src;
-    fd = open("file.txt", O_RDONLY);
+    fd = open(file, O_RDONLY);
     if (fd == -1)
         _error("read error.\n");
 
@@ -16,7 +16,7 @@ void test_read(const char *file, char *buf)
     // if(signal(SIGCONT,output)==SIG_ERR){}
 
     memcpy(buf, src, getpagesize());
-    printf("read: %s\n", buf);
+    // printf("read: %s\n", buf);
     munmap(src, getpagesize());
 }
 // void output(int _signal)

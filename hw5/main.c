@@ -9,9 +9,9 @@
 int main()
 {
     // signal(SIGINT, sig);
-    pid_t pid = fork();
     // int fd = open("file.txt", O_RDWR | O_CREAT | O_TRUNC, 0777);
 
+    pid_t pid = fork();
     if (pid > 0) /*parent mode*/
     {
         test_write("test.txt");
@@ -25,7 +25,7 @@ int main()
 
         char buf[sysconf(_SC_PAGESIZE)];
         test_read("test.txt", buf);
-        // printf("READ: %s", buf);
+        printf("READ: %s", buf);
     }
     else
     {

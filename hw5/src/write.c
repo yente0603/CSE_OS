@@ -3,7 +3,6 @@ void test_write(const char *file)
 {
     int fd;
     char *dst;
-    memset(context, '\0', 4096); // initilize
     fd = open(file, O_RDWR | O_CREAT | O_TRUNC, 0777);
     if (fd == -1)
         _error("write error.\n");
@@ -14,11 +13,13 @@ void test_write(const char *file)
     //          Otherwise, the effect of O_TRUNC is unspecified.
     // 0777: the protection mode in octal.
     // */
+
     size_t len;
     printf("write: \n");
     while (~scanf("%[^\n]s", context) && getchar())
     {
-        len = strlen((char *)context);
+        // len = strlen((char *)context);
+        len = strlen(context);
         context[len++] = '\n';
         // printf("%ld\n", len);
         break;
@@ -26,7 +27,7 @@ void test_write(const char *file)
 
     size_t _len = 0;
     lseek(fd, _len + len, SEEK_SET);
-    // lseek(fd, strlen(context), SEEK_SET);
+    // lseek(fd, _len + len, SEEK_SET);
     /*
     move fd's position to the offset bytes
     and return the new file position for RW

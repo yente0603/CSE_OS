@@ -9,6 +9,7 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <sys/mman.h> //mmap()
+#include "write.h"
 #define _error(message)     \
     do                      \
     {                       \

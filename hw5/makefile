@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -std=c11 
+CFLAGS = -Wall -std=gnu99
 SRC = src
 all: dep
 	$(CC) $(CFLAGS) *.o -o main.elf

@@ -11,6 +11,7 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 #include <sys/mman.h> //mmap()
+#include <stddef.h>
 #define _error(message)     \
     do                      \
     {                       \

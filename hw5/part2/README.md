@@ -1,6 +1,6 @@
-#Multiple definition of ... linker error
+# Multiple definition of ... linker error
 
-##Don't define variables in headers. Put declarations in header and definitions in one of the .c files
+## Don't define variables in headers. Put declarations in header and definitions in one of the .c files
 
 In config.h
 ```

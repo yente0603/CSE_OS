@@ -15,6 +15,14 @@ void test_write(const char *file)
     // 0777: the protection mode in octal.
     // */
 
+    dst = mmap(NULL, getpagesize(), PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+    /*
+    void *mmap(void *addr, size_t length, int prot, int flags,int fd, off_t offset);
+    mmap() creates a new mapping in the virtual address space of the calling process.
+    */
+    if (dst == MAP_FAILED)
+        _error("mmap error.\n");
+
     char *_dst = (char *)dst;
     printf("WRITE: \n");
     while (~scanf("%[^\n]s", context) && getchar())
@@ -27,15 +35,6 @@ void test_write(const char *file)
         move fd's position to the offset bytes
         and return the new file position for RW
         */
-
-        dst = (char *)mmap(NULL, getpagesize(), PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
-        /*
-        void *mmap(void *addr, size_t length, int prot, int flags,int fd, off_t offset);
-        mmap() creates a new mapping in the virtual address space of the calling process.
-        */
-        if (dst == MAP_FAILED)
-            _error("mmap error.\n");
-
         memcpy(dst, context, len); // write into the file
         _dst += len;
     }

@@ -3,11 +3,11 @@
 char context[4096];
 int main()
 {
-
     pid_t pid = fork();
     if (pid > 0) /*parent mode*/
     {
         waitpid(pid, NULL, 0);
+
         // test_read("foo", context);
         // printf("READ: %s\n", context);
 

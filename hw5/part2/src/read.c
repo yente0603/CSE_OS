@@ -2,7 +2,7 @@
 void test_read(const char *file, char *context)
 {
     int fd;
-    char *src;
+    void *src;
     fd = open(file, O_RDONLY);
     if (fd == -1)
         _error("read error.\n");
@@ -24,24 +24,18 @@ void test_read(const char *file, char *context)
      * if(buf.st_size==0){ printf("empty file.\n"); }
      */
 
-    src = (char *)mmap(NULL, getpagesize(), PROT_READ, MAP_SHARED, fd, 0);
+    src = mmap(NULL, getpagesize(), PROT_READ, MAP_SHARED, fd, 0);
     close(fd); // Close fd first, Be sure it read from memory immediately.
 
     if (src == MAP_FAILED)
         _error("mmap error.\n");
-
-    // if(signal(SIGCONT,output)==SIG_ERR){}
 
     // printf("READ: \n");
     // for (int i = 0; i < getpagesize(); i++)
     //     printf("%s\n", context[i]);
 
     memcpy(context, src, getpagesize());
-    // printf("read: %s\n", buf);
+    // printf("READ: %s\n", context);
+
     munmap(src, getpagesize());
 }
-// void output(int _signal)
-// {
-//     // memcpy(context, p, getpagesize());
-//     printf("read: %s\n", context);
-// }

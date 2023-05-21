@@ -2,7 +2,7 @@
 void test_write(const char *file, const void *context)
 {
     int fd;
-    char *dst;
+    void *dst;
     fd = open(file, O_RDWR | O_CREAT | O_TRUNC, 0777);
     if (fd == -1)
         _error("write error.\n");
@@ -21,7 +21,10 @@ void test_write(const char *file, const void *context)
     and return the new file position for RW
     */
 
-    dst = (char *)mmap(NULL, getpagesize(), PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+    if (write(fd, "", 1) != 1) // dummy byte, reference:
+        _error("write error.\n");
+
+    dst = mmap(NULL, getpagesize(), PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
     /*
     void *mmap(void *addr, size_t length, int prot, int flags,int fd, off_t offset);
     mmap() creates a new mapping in the virtual address space of the calling process.
@@ -29,10 +32,8 @@ void test_write(const char *file, const void *context)
     if (dst == MAP_FAILED)
         _error("mmap error.\n");
 
-    memcpy(dst, context, strlen(context + 1)); // write into the memory
+    memcpy(dst, context, strlen(context)); // write into the
 
-    if (write(fd, "", 1) != 1)
-        _error("write error.\n");
     // sleep(5);
     munmap(dst, getpagesize()); // close mmap
     close(fd);                  // close fd

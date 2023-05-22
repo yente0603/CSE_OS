@@ -13,13 +13,14 @@ date: 2023/05/22
 
 
 2. new line: two spaces in same paragraph / two space line  
-   e.g., 
+   e.g.,  
    hello world!  
    Auther: Yen Te, Lee
-3. emphasized text： use '\*' / '_' of for *italic type* ; use '\*\*' /'__' for **bold type** 
+3. emphasized text： use '\*' / '_' of for *italic type* ; use '\*\*' / '__' for **bold type** 
    
 4. list: \* / + / - / 1. 
-5. reminder: -[  ] , such as 
+5. reminder: -[  ]  
+   e.g.,  
    - [   ] 代辦事項
    - [Ｘ] 完成事項
 6. segment line: three or more *** / --- / ___ /  
@@ -40,11 +41,17 @@ const char *names[] = {"brian", "stefan", "steve"};
 
 8. link: could use [text](link "title") or <link> to build up  
     e.g.,
-    [中山大學](http://www.nsysu.edu.tw/ "Link to NSYSU")
+    [中山大學](http://www.nsysu.edu.tw/ "Link to NSYSU")  
     <http://www.nsysu.edu.tw>
 9.  introduction: use '>'
-    > Ich hoffe, es geht dir gut.
+    > Ich hoffe, es geht dir gut.  
     *from Germany*
+
+
+    or
+    > Ich hoffe, es geht dir gut.
+    >*from Germany*
+
 10. picture: use .png  
     ![Python Logo](https://www.python.org/static/community_logos/python-logo-master-v3-TM.png "Python Logo")
     ![film](fuji_industrial100_expired_2.png "fuji_industrial100_expired")

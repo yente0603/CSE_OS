@@ -18,7 +18,7 @@ static const char *names[] = {"brian", "stefan",  "steve" };
 ```
 * This way variable names will be defined only once in your entire program and can be accessed multiple number of times.  
 
-
+****
 Declarations of public functions go in header files, yes, but definitions are absolutely valid in headers as well! You may declare the definition as static (only 1 copy allowed for the entire program) if you are defining things in a header for utility functions that you don't want to have to define again in each c file. I.E. defining an enum and a static function to translate the enum to a string. Then you won't have to rewrite the enum to string translator for each .c file that includes the header.
 
 

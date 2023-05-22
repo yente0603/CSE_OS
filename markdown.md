@@ -52,9 +52,8 @@ const char *names[] = {"brian", "stefan", "steve"};
     1. ':-'  align to the left
     2. ':-:' align to the center
     3. '-:'  align to the right
-    e.g.,
 
-    
+
 __ans__
 | pages  | counter  |
 | ------ | -------- |

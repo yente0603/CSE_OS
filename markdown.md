@@ -26,7 +26,7 @@ date: 2023/05/22
 6. segment line: three or more *** / --- / ___ /  
    e.g.,
    ***
-   This is my first markdown
+   This is my first markdown manual.
    ***
 7. code:
    
@@ -40,7 +40,7 @@ const char *names[] = {"brian", "stefan", "steve"};
 ```
 
 8. link: could use [text](link "title") or <link> to build up  
-    e.g.,
+    e.g.,  
     [中山大學](http://www.nsysu.edu.tw/ "Link to NSYSU")  
     <http://www.nsysu.edu.tw>
 9.  introduction: use '>'
@@ -50,15 +50,15 @@ const char *names[] = {"brian", "stefan", "steve"};
 
     or
     > Ich hoffe, es geht dir gut.
-    >*from Germany*
+    > *from Germany*
 
 10. picture: use .png  
     ![Python Logo](https://www.python.org/static/community_logos/python-logo-master-v3-TM.png "Python Logo")
     ![film](fuji_industrial100_expired_2.png "fuji_industrial100_expired")
-11.  table: 
-    1. ':-'  align to the left
-    2. ':-:' align to the center
-    3. '-:'  align to the right
+11.  table:  
+    1. ':-'  align to the left  
+    2. ':-:' align to the center  
+    3. '-:'  align to the right  
 
 
 __ans__

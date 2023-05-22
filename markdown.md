@@ -12,7 +12,7 @@ date: 2023/05/22
 #### title 4
 
 
-2. new line: two spaces in same paragraph / two space line
+2. new line: two spaces in same paragraph / two space line  
    e.g., 
    hello world!  
    Auther: Yen Te, Lee
@@ -22,7 +22,7 @@ date: 2023/05/22
 5. reminder: -[  ] , such as 
    - [   ] 代辦事項
    - [Ｘ] 完成事項
-6. segment line: three or more *** / --- / ___ /
+6. segment line: three or more *** / --- / ___ /  
    e.g.,
    ***
    This is my first markdown
@@ -38,7 +38,7 @@ In config.c
 const char *names[] = {"brian", "stefan", "steve"};
 ```
 
-8. link: could use [text](link "title") or <link> to build up
+8. link: could use [text](link "title") or <link> to build up  
     e.g.,
     [中山大學](http://www.nsysu.edu.tw/ "Link to NSYSU")
     <http://www.nsysu.edu.tw>

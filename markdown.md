@@ -47,17 +47,17 @@ const char *names[] = {"brian", "stefan", "steve"};
     *from Germany*
 10. picture: use .png  
     ![Python Logo](https://www.python.org/static/community_logos/python-logo-master-v3-TM.png "Python Logo")
-    ![film](/2023/fuji_industrial100_expired_2.png "fuji_industrial100_expired")
+    ![film](fuji_industrial100_expired_2.png "fuji_industrial100_expired")
 11.  table: 
     1. ':-'  align to the left
     2. ':-:' align to the center
     3. '-:'  align to the right
     e.g.,
-    __ans__
-    | pages  | counter  |
-    | ------ | -------- |
-    | page 0 | 01101110 |
-    | page 1 | 01001001 |
-    | page 2 | 00110111 |
-    | page 3 | 10001011 |
+__ans__
+| pages  | counter  |
+| ------ | -------- |
+| page 0 | 01101110 |
+| page 1 | 01001001 |
+| page 2 | 00110111 |
+| page 3 | 10001011 |
 

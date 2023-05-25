@@ -7,18 +7,17 @@ int main()
     if (pid > 0) /*parent mode*/
     {
         waitpid(pid, NULL, 0);
-
         // test_read("foo", context);
         // printf("READ: %s\n", context);
 
         char buf[sysconf(_SC_PAGESIZE)];
         test_read("foo", buf);
-        printf("READ: %s", buf);
+        // printf("READ: %s", buf);
     }
     else if (pid == 0) /*child mode*/
     {
         size_t _len = 0;
-        printf("WRITE: \n");
+        printf("WRITE: ");
         while (~scanf("%[^\n]s", context) && getchar())
         {
             size_t len = strlen(context);

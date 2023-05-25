@@ -35,7 +35,7 @@ void test_read(const char *file, char *context)
     //     printf("%s\n", context[i]);
 
     memcpy(context, src, getpagesize());
-    // printf("READ: %s\n", context);
+    printf("READ: %s", context);
 
     munmap(src, getpagesize());
 }
